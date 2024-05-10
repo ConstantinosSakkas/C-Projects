@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3247c32c1213496196e7e3d704453855" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="mssql2200984Model.Ingredient" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="mssql2200984Model.RecipeIngredient" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mssql2200984Model.Recipe" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mssql2200984Model.UserFavorite" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="mssql2200984Model.UserProfile" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mssql2200984Model.UserRatingsReview" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="mssql2200984Model.FK__RecipeIng__Ingre__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__RecipeIng__Ingre__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__RecipeIng__Recip__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__RecipeIng__Recip__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserFavor__Recip__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserFavor__Recip__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserRatin__Recip__6FB49575" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserRatin__Recip__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserFavor__UserI__6EC0713C" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserFavor__UserI__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserRatin__UserI__70A8B9AE" ManuallyRouted="false" />
+        <AssociationConnector Association="mssql2200984Model.FK__UserRatin__UserI__7C1A6C5A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

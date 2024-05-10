@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mssql2200984Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ingredients">
+    <Key>
+      <PropertyRef Name="IngredientID" />
+    </Key>
+    <Property Name="IngredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NutritionalInfo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="RecipeIngredients">
+    <Key>
+      <PropertyRef Name="RecipeID" />
+      <PropertyRef Name="IngredientID" />
+    </Key>
+    <Property Name="RecipeID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipes">
+    <Key>
+      <PropertyRef Name="RecipeID" />
+    </Key>
+    <Property Name="RecipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cuisine" Type="varchar" MaxLength="50" />
+    <Property Name="PreparationTime" Type="int" />
+    <Property Name="AverageRating" Type="decimal" Precision="3" Scale="2" />
+  </EntityType>
+  <EntityType Name="UserFavorites">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RecipeID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RecipeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfiles">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DietaryPreferences" Type="varchar" MaxLength="255" />
+    <Property Name="Allergies" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserRatingsReviews">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RecipeID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RecipeID" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="Review" Type="text" />
+  </EntityType>
+  <EntityType Name="UserStock">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IngredientID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__RecipeIng__Ingre__6BE40491">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecipeIng__Ingre__7755B73D">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecipeIng__Recip__6CD828CA">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecipeIng__Recip__7849DB76">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="RecipeIngredients">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavor__Recip__6DCC4D03">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="UserFavorites" Type="Self.UserFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="UserFavorites">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavor__Recip__793DFFAF">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="UserFavorites" Type="Self.UserFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="UserFavorites">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavor__UserI__6EC0713C">
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+    <End Role="UserFavorites" Type="Self.UserFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfiles">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFavorites">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavor__UserI__7A3223E8">
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+    <End Role="UserFavorites" Type="Self.UserFavorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfiles">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserFavorites">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRatin__Recip__6FB49575">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="UserRatingsReviews" Type="Self.UserRatingsReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="UserRatingsReviews">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRatin__Recip__7B264821">
+    <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+    <End Role="UserRatingsReviews" Type="Self.UserRatingsReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipes">
+        <PropertyRef Name="RecipeID" />
+      </Principal>
+      <Dependent Role="UserRatingsReviews">
+        <PropertyRef Name="RecipeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRatin__UserI__70A8B9AE">
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+    <End Role="UserRatingsReviews" Type="Self.UserRatingsReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfiles">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRatingsReviews">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRatin__UserI__7C1A6C5A">
+    <End Role="UserProfiles" Type="Self.UserProfiles" Multiplicity="1" />
+    <End Role="UserRatingsReviews" Type="Self.UserRatingsReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfiles">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRatingsReviews">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserStock_Ingredients">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="UserStock" Type="Self.UserStock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="IngredientID" />
+      </Principal>
+      <Dependent Role="UserStock">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mssql2200984ModelStoreContainer">
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="RecipeIngredients" EntityType="Self.RecipeIngredients" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="UserFavorites" EntityType="Self.UserFavorites" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="UserRatingsReviews" EntityType="Self.UserRatingsReviews" Schema="RecipesDB" store:Type="Tables" />
+    <EntitySet Name="UserStock" EntityType="Self.UserStock" Schema="RecipesDB" store:Type="Tables" />
+    <AssociationSet Name="FK__RecipeIng__Ingre__6BE40491" Association="Self.FK__RecipeIng__Ingre__6BE40491">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecipeIng__Ingre__7755B73D" Association="Self.FK__RecipeIng__Ingre__7755B73D">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecipeIng__Recip__6CD828CA" Association="Self.FK__RecipeIng__Recip__6CD828CA">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecipeIng__Recip__7849DB76" Association="Self.FK__RecipeIng__Recip__7849DB76">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavor__Recip__6DCC4D03" Association="Self.FK__UserFavor__Recip__6DCC4D03">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="UserFavorites" EntitySet="UserFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavor__Recip__793DFFAF" Association="Self.FK__UserFavor__Recip__793DFFAF">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="UserFavorites" EntitySet="UserFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavor__UserI__6EC0713C" Association="Self.FK__UserFavor__UserI__6EC0713C">
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+      <End Role="UserFavorites" EntitySet="UserFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavor__UserI__7A3223E8" Association="Self.FK__UserFavor__UserI__7A3223E8">
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+      <End Role="UserFavorites" EntitySet="UserFavorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRatin__Recip__6FB49575" Association="Self.FK__UserRatin__Recip__6FB49575">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="UserRatingsReviews" EntitySet="UserRatingsReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRatin__Recip__7B264821" Association="Self.FK__UserRatin__Recip__7B264821">
+      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="UserRatingsReviews" EntitySet="UserRatingsReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRatin__UserI__70A8B9AE" Association="Self.FK__UserRatin__UserI__70A8B9AE">
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+      <End Role="UserRatingsReviews" EntitySet="UserRatingsReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRatin__UserI__7C1A6C5A" Association="Self.FK__UserRatin__UserI__7C1A6C5A">
+      <End Role="UserProfiles" EntitySet="UserProfiles" />
+      <End Role="UserRatingsReviews" EntitySet="UserRatingsReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserStock_Ingredients" Association="Self.FK_UserStock_Ingredients">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="UserStock" EntitySet="UserStock" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
